@@ -45,7 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Mail.cs" />
-    <Compile Include="Services\FetchEmail.cs" />
+    <Compile Include="Interfaces\IEmailService.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\GreetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IGreetService.cs" />
