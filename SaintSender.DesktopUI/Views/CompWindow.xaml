@@ -1,0 +1,30 @@
+﻿<Window x:Class="SaintSender.DesktopUI.Views.CompWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
+        mc:Ignorable="d"
+        Title="Compose" Height="400" Width="560">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="1" Content="Send to:"/>
+        <TextBox Grid.Row="2" Name="targetEmail" Margin="5"/>
+        <Label Grid.Row="3" Content="Subject"/>
+        <TextBox Grid.Row="4" Name="subject" Margin="5"/>
+        <Label Grid.Row="5" Content="Message"/>
+        <TextBox Grid.Row="6" AcceptsReturn="True" TextWrapping="Wrap" Name="message" Margin="5" Height="100"/>
+        <Button Grid.Row="7" Content="Send"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="50" Margin="220,0,0,5"></Button>
+        <Button Grid.Row="7" Content="Cancel"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,220,5" Width="50"></Button>
+    </Grid>
+</Window>

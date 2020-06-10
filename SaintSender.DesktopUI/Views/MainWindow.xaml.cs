@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Services;
+using SaintSender.DesktopUI.Views;
 
 namespace SaintSender.DesktopUI
 {
@@ -32,6 +33,12 @@ namespace SaintSender.DesktopUI
             var name = NameTxt.Text;
             var greeting = service.Greet(name);
             ResultTxt.Text = greeting;
+        }
+
+        private void ComposeBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            CompWindow compose = new CompWindow();
+            compose.Show();
         }
     }
 }
