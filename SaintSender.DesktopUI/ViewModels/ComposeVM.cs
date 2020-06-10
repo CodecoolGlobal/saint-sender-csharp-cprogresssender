@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace SaintSender.Core.Services
 {
@@ -17,7 +18,7 @@ namespace SaintSender.Core.Services
             this.message = message;
             result = "Email sent succesfully";
         }
-        public void Validation()
+        private void Validation()
         {
             if (toAddress == string.Empty || !EmailService.IsValidEmailAddress(toAddress))
             {
@@ -35,10 +36,12 @@ namespace SaintSender.Core.Services
 
         public void Sending()
         {
+            Validation();
             if (result == "Email sent succesfully")
             {
                 EmailService.SendMail(toAddress, subject, message);
             }
+            MessageBox.Show(result);
         }
     }
 }

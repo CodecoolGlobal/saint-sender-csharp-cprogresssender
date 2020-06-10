@@ -29,9 +29,7 @@ namespace SaintSender.DesktopUI.Views
         private void Send_Clicked(object sender, RoutedEventArgs e)
         {
             ComposeVM compVM = new ComposeVM(targetEmail.Text, subject.Text, message.Text);
-            compVM.Validation();
             compVM.Sending();
-            MessageBox.Show(compVM.result);
         }
 
         private void Close_Clicked(object sender, RoutedEventArgs e)
