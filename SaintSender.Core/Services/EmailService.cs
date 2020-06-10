@@ -56,7 +56,7 @@ namespace SaintSender.Core.Services
             return _mails;
         }
 
-        public void SendMail(string target, string subject, string message)
+        public static void SendMail(string target, string subject, string message)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace SaintSender.Core.Services
                 mail.Body = message;
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "hidden");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "hiddenForNow");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);

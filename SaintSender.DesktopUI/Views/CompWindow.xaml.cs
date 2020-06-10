@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SaintSender.Core.Services;
+using SaintSender.Core.Interfaces;
 
 namespace SaintSender.DesktopUI.Views
 {
@@ -22,6 +24,24 @@ namespace SaintSender.DesktopUI.Views
         public CompWindow()
         {
             InitializeComponent();
+        }
+
+        private void Send_Clicked(object sender, RoutedEventArgs e)
+        {
+            string result = ValidatePreSend.IsSuccessful(targetEmail.Text, subject.Text, message.Text);
+            if (result == "send")
+            {
+                EmailService.SendMail(targetEmail.Text, subject.Text, message.Text);
+            }
+            else
+            {
+                MessageBox.Show(result);
+            }
+        }
+
+        private void Close_Clicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
