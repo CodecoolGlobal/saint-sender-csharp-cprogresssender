@@ -12,14 +12,14 @@ namespace SaintSender.Core.Services
 
         public ComposeVM(string to, string subject, string message)
         {
-            this.toAddress = to;
+            toAddress = to;
             this.subject = subject;
             this.message = message;
-            this.result = "Email sent succesfully";
+            result = "Email sent succesfully";
         }
         public void Validation()
         {
-            if (toAddress == string.Empty || !IsValidEmailAddress(toAddress))
+            if (toAddress == string.Empty || !EmailService.IsValidEmailAddress(toAddress))
             {
                 result = "Provide a correct email address...";
             }
@@ -39,12 +39,6 @@ namespace SaintSender.Core.Services
             {
                 EmailService.SendMail(toAddress, subject, message);
             }
-        }
-
-        public static bool IsValidEmailAddress(string to)
-        {
-            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-            return regex.IsMatch(to);
         }
     }
 }

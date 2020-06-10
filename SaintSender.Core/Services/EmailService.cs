@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using EAGetMail;
 using SaintSender.Core.Interfaces;
 
@@ -70,7 +71,7 @@ namespace SaintSender.Core.Services
                 mail.Body = message;
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "CPSpi1000101");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "hiddenForNow");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
@@ -79,6 +80,12 @@ namespace SaintSender.Core.Services
             {
                 Console.WriteLine(ex.ToString());
             }
+
+        }
+        public static bool IsValidEmailAddress(string to)
+        {
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            return regex.IsMatch(to);
         }
     }
 }
