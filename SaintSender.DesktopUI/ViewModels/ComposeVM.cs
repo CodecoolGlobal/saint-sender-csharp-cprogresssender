@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace SaintSender.Core.Services
 {
-    public class Sender
+    public class ComposeVM
     {
         private string toAddress;
         private string subject;
         private string message;
         public string result { get; private set; }
 
-        public Sender(string to, string subject, string message)
+        public ComposeVM(string to, string subject, string message)
         {
             this.toAddress = to;
             this.subject = subject;

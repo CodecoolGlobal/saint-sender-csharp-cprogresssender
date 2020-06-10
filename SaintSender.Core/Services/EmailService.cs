@@ -70,11 +70,10 @@ namespace SaintSender.Core.Services
                 mail.Body = message;
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "hiddenForNow");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "CPSpi1000101");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
-                Console.WriteLine("Email sent successfully");
             }
             catch (Exception ex)
             {
