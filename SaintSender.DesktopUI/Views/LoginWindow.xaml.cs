@@ -2,6 +2,8 @@
 using SaintSender.DesktopUI.ViewModels;
 using SaintSender.Core.Services;
 using System.Windows.Controls;
+using System.Configuration;
+using System.Security;
 
 namespace SaintSender.DesktopUI.Views
 {
@@ -14,6 +16,7 @@ namespace SaintSender.DesktopUI.Views
         public LoginWindow()
         {
             InitializeComponent();
+            LoadUserCredentials();
             loginVM = new LoginVM(); 
         }
 
@@ -30,11 +33,26 @@ namespace SaintSender.DesktopUI.Views
             {
                 if (loginVM.AccessToGmail())
                 {
+                    SaveUserCredentials(userMailAddress.Text, passwordBox1.SecurePassword);
                     this.DialogResult = true;
                     this.Close();
                 }
                 appMessage.Content = "Login was not successful.";
             }
+        }
+
+        private void SaveUserCredentials(string userName, SecureString password)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["UserName"].Value = userName.Trim();
+            //config.AppSettings.Settings["UserPassword"].Value = password;
+            ConfigurationManager.RefreshSection("appSettings");
+            config.Save(ConfigurationSaveMode.Modified);
+        }
+
+        private void LoadUserCredentials()
+        {
+            userMailAddress.Text = ConfigurationManager.AppSettings.Get("UserName");
         }
     }
 }
