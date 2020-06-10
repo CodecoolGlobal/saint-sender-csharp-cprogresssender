@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using EAGetMail;
 using SaintSender.Core.Interfaces;
 
@@ -53,6 +54,32 @@ namespace SaintSender.Core.Services
         {
             FetchMail();
             return _mails;
+        }
+
+        public void SendMail(string target, string subject, string message)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                // TODO: change From to the logged in account, and also it's pw
+                mail.From = new System.Net.Mail.MailAddress("cprogresssender@gmail.com");
+                mail.To.Add(target);
+                mail.Subject = subject;
+                mail.Body = message;
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "hidden");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+                Console.WriteLine("Email sent successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }
