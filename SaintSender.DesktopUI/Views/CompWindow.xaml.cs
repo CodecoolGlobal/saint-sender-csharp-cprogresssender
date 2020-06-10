@@ -28,15 +28,10 @@ namespace SaintSender.DesktopUI.Views
 
         private void Send_Clicked(object sender, RoutedEventArgs e)
         {
-            string result = ValidatePreSend.IsSuccessful(targetEmail.Text, subject.Text, message.Text);
-            if (result == "send")
-            {
-                EmailService.SendMail(targetEmail.Text, subject.Text, message.Text);
-            }
-            else
-            {
-                MessageBox.Show(result);
-            }
+            Sender s = new Sender(targetEmail.Text, subject.Text, message.Text);
+            s.Validation();
+            s.Sending();
+            MessageBox.Show(s.result);
         }
 
         private void Close_Clicked(object sender, RoutedEventArgs e)

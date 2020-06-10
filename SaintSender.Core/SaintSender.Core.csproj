@@ -51,7 +51,7 @@
     <Compile Include="Services\GreetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IGreetService.cs" />
-    <Compile Include="Services\ValidatePreSend.cs" />
+    <Compile Include="Services\Sender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entities\ReadMe.md" />

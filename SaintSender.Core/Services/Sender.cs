@@ -7,12 +7,23 @@ using System.Threading.Tasks;
 
 namespace SaintSender.Core.Services
 {
-    public class ValidatePreSend
+    public class Sender
     {
-        public static string IsSuccessful(string to, string subject, string message)
+        private string toAddress;
+        private string subject;
+        private string message;
+        public string result { get; private set; }
+
+        public Sender(string to, string subject, string message)
         {
-            string result = "send";
-            if (to == string.Empty || !IsValidEmailAddress(to))
+            this.toAddress = to;
+            this.subject = subject;
+            this.message = message;
+            this.result = "Email sent succesfully";
+        }
+        public void Validation()
+        {
+            if (toAddress == string.Empty || !IsValidEmailAddress(toAddress))
             {
                 result = "Provide a correct email address...";
             }
@@ -24,7 +35,14 @@ namespace SaintSender.Core.Services
             {
                 result = "Do not leave message empty...";
             }
-            return result;
+        }
+
+        public void Sending()
+        {
+            if (result == "Email sent succesfully")
+            {
+                EmailService.SendMail(toAddress, subject, message);
+            }
         }
 
         public static bool IsValidEmailAddress(string to)
