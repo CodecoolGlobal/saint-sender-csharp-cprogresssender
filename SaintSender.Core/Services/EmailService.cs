@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Security;
 using EAGetMail;
 using SaintSender.Core.Interfaces;
 
@@ -13,8 +15,8 @@ namespace SaintSender.Core.Services
         private void FetchMail()
         {
             MailServer oServer = new MailServer("imap.gmail.com",
-                "cprogresssender@gmail.com",
-                "CPSpi1000101",
+                LoginService.UserAddress, //"cprogresssender@gmail.com",
+                SecureStringToString(LoginService.Password), //"CPSpi1000101",
                 ServerProtocol.Imap4);
             MailClient oClient = new MailClient("TryIt");
             oServer.SSLConnection = true;
@@ -28,7 +30,9 @@ namespace SaintSender.Core.Services
             }
             catch (Exception e)
             {
-                throw (e);
+                // changed _mails to null because this is the ad-hoc connection tester in LoginVM.
+                _mails = null;
+                // throw (e);
             }
         }
 
@@ -47,6 +51,19 @@ namespace SaintSender.Core.Services
                     ));
             }
 
+        }
+        String SecureStringToString(SecureString value)
+        {
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(value);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
         }
 
         public List<Entities.Mail> GetEmails()
