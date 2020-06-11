@@ -10,7 +10,8 @@ namespace SaintSender.Core.Services
         private string toAddress;
         private string subject;
         private string message;
-        public string result { get; private set; }
+        private string messageToUser;
+        public bool canSend { get; private set; }
 
         public ComposeVM()
         {
@@ -22,32 +23,40 @@ namespace SaintSender.Core.Services
             toAddress = to;
             this.subject = subject;
             this.message = message;
-            result = "Email sent succesfully";
+            messageToUser = "Email sent succesfully";
+            canSend = false;
         }
         private void Validation()
         {
             if (toAddress == string.Empty || !EmailService.IsValidEmailAddress(toAddress))
             {
-                result = "Provide a correct email address...";
+                messageToUser = "Provide a correct email address...";
             }
             else if (subject == string.Empty)
             {
-                result = "Do not leave subject empty...";
+                messageToUser = "Do not leave subject empty...";
             }
             else if (message == string.Empty)
             {
-                result = "Do not leave message empty...";
+                messageToUser = "Do not leave message empty...";
+            }
+            else
+            {
+                canSend = true;
             }
         }
 
-        public void Sending()
+        public bool Sending()
         {
+            bool sent = false;
             Validation();
-            if (result == "Email sent succesfully")
+            if (canSend)
             {
                 EmailService.SendMail(toAddress, subject, message);
+                sent = true;
             }
-            MessageBox.Show(result);
+            MessageBox.Show(messageToUser, "Status", MessageBoxButton.OK, MessageBoxImage.Information);
+            return sent;
         }
 
         public bool CloseResult()

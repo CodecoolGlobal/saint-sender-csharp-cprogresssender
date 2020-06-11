@@ -29,14 +29,18 @@ namespace SaintSender.DesktopUI.Views
         private void Send_Clicked(object sender, RoutedEventArgs e)
         {
             ComposeVM compVM = new ComposeVM(targetEmail.Text, subject.Text, message.Text);
-            compVM.Sending();
+            bool succesful = compVM.Sending();
+            if (succesful)
+            {
+                this.Close();
+            }
         }
 
         private void Close_Clicked(object sender, RoutedEventArgs e)
         {
             ComposeVM compVM = new ComposeVM();
-            bool result = compVM.CloseResult();
-            if (result)
+            bool closeClarified = compVM.CloseResult();
+            if (closeClarified)
             {
                 this.Close();
             }
