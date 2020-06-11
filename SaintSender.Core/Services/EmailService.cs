@@ -82,13 +82,13 @@ namespace SaintSender.Core.Services
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
                 // TODO: change From to the logged in account, and also it's pw
-                mail.From = new System.Net.Mail.MailAddress("cprogresssender@gmail.com");
+                mail.From = new System.Net.Mail.MailAddress(LoginService.UserAddress);
                 mail.To.Add(target);
                 mail.Subject = subject;
                 mail.Body = message;
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("cprogresssender@gmail.com", "hiddenForNow");
+                SmtpServer.Credentials = new System.Net.NetworkCredential(LoginService.UserAddress, LoginService.Password);
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);

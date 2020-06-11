@@ -13,6 +13,11 @@ namespace SaintSender.Core.Services
         private string messageToUser;
         public bool canSend { get; private set; }
 
+        public ComposeVM()
+        {
+
+        }
+
         public ComposeVM(string to, string subject, string message)
         {
             toAddress = to;
