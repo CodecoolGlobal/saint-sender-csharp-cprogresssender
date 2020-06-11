@@ -7,12 +7,41 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SingleMail">
+    <Border Background="{StaticResource SteelBlueBrush}"
+            Padding="20">
+        
+        <Grid Background="{StaticResource IvoryBrush}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-    <Grid>
-        <Label Content="{Binding Mail.Sender}" HorizontalAlignment="Left" Height="42" Margin="10,23,0,0" VerticalAlignment="Top" Width="383"/>
-        <Label Content="{Binding Mail.Date}" HorizontalAlignment="Right" Height="42" Margin="438,23,0,0" VerticalAlignment="Top" Width="322"/>
-        <Label Content="{Binding Mail.Subject}" HorizontalAlignment="Left" Height="42" Margin="10,79,0,0" VerticalAlignment="Top" Width="294"/>
-        <Label Content="{Binding Mail.Message}" HorizontalAlignment="Left" Height="269" Margin="106,140,0,0" VerticalAlignment="Top" Width="580"/>
+                <StackPanel>
+                    <DockPanel Margin="10">
+                        <Label Content="From: " VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Mail.Sender}"
+                                 Foreground="{StaticResource SteelBlueBrush}"
+                                 FontSize="{StaticResource FontSizeRegular}"
+                                 Style="{StaticResource ReadOnlyTextBox}"
+                                 VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Mail.Date}"
+                                 HorizontalAlignment="Right"
+                                 Foreground="{StaticResource SteelBlueLightBrush}"
+                                 FontSize="{StaticResource FontSizeRegular}"
+                                 Style="{StaticResource ReadOnlyTextBox}"
+                                 VerticalAlignment="Center"/>
+                    </DockPanel>
+                    <TextBox Margin="10" 
+                             Text="{Binding Mail.Subject}"
+                             Foreground="{StaticResource SteelBlueBrush}"
+                             FontSize="{StaticResource FontSizeLarge}"
+                             Style="{StaticResource ReadOnlyTextBox}"/>
+                    <TextBox TextWrapping="Wrap"
+                             Margin="10"
+                             Text="{Binding Mail.Message}"
+                             FontSize="{StaticResource FontSizeRegular}"
+                             VerticalAlignment="Stretch"
+                             Style="{StaticResource ReadOnlyTextBox}"/>
+                </StackPanel>
 
-    </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </Window>
