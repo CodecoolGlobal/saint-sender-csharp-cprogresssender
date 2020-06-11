@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         mc:Ignorable="d"
-        Title="Compose" Height="400" Width="560">
-    <Grid>
+        Title="SanitySender: Composing Message" Height="400" Width="560">
+    <Grid Background="{StaticResource IvoryBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -14,17 +14,30 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="130"/>
+            <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="1" Content="Send to:"/>
-        <TextBox Grid.Row="2" Name="targetEmail" Margin="5"/>
-        <Label Grid.Row="3" Content="Subject"/>
-        <TextBox Grid.Row="4" Name="subject" Margin="5"/>
-        <Label Grid.Row="5" Content="Message"/>
-        <TextBox Grid.Row="6" AcceptsReturn="True" TextWrapping="Wrap" Name="message" Margin="5" Height="100"/>
-        <Button Grid.Row="7" Content="Send"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="50" Margin="220,0,0,5" Click="Send_Clicked"></Button>
-        <Button Grid.Row="7" Content="Cancel"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,220,5" Width="50" Click="Close_Clicked"></Button>
+
+        <Label Grid.Row="1" Content="Send to:" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Row="2" Name="targetEmail" Margin="5, 0" Height="28" VerticalContentAlignment="Center" Style="{StaticResource TextBoxRounded}"/>
+        <Label Grid.Row="3" Content="Subject:" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Row="4" Name="subject" Margin="5, 0" Height="28" VerticalContentAlignment="Center" Style="{StaticResource TextBoxRounded}"/>
+        <Label Grid.Row="5" Content="Message:" VerticalAlignment="Bottom"/>
+        <TextBox  Grid.Row="6" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" TextWrapping="Wrap" Name="message" Margin="5, 0" Height="100" Style="{StaticResource TextBoxRounded}"/>
+        
+            
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Padding="30,5" Content="Cancel"   VerticalAlignment="Center" Click="Close_Clicked" Style="{StaticResource ButtonBasic}"/>
+            <Button Grid.Column="3" Padding="30,5" Content="Send"  VerticalAlignment="Center" Click="Send_Clicked" Style="{StaticResource ButtonBasic}"/>
+        </Grid>
+        
     </Grid>
 </Window>
