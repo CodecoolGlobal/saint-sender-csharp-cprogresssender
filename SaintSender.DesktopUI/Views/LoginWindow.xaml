@@ -19,19 +19,19 @@
                     <!-- Login textarea -->
                     <Border Background="{StaticResource BackgroundLightBrush}"
                             CornerRadius="10"
-                            Padding="10, 30, 10, 10">
+                            Padding="10, 20, 10, 10">
 
                         <StackPanel>
-                            <TextBlock Text=" Login" Margin="0, 10"/>
-                            <Label Content="E-mail" HorizontalAlignment="Left"/>
-                            <TextBox Name="userMailAddress" Height="50" Style="{DynamicResource TextBoxRounded}"/>
-                            <Label Content="Password" HorizontalAlignment="Left"/>
-                            <PasswordBox Name="passwordBox1" Height="50" Style="{StaticResource PasswordBoxRounded}"/>
+                            <TextBlock Text="Login" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold"/>
+                            <Label Content="E-mail" HorizontalAlignment="Left" Foreground="Gray"/>
+                            <TextBox Name="userMailAddress" Padding="5" FontSize="{StaticResource FontSizeRegular}" Style="{DynamicResource TextBoxRounded}"/>
+                            <Label Content="Password" HorizontalAlignment="Left" Foreground="Gray"/>
+                            <PasswordBox Name="passwordBox1" FontSize="{StaticResource FontSizeRegular}" Padding="5" Style="{DynamicResource PasswordBoxRounded}"/>
                             <Button Click="Login_Click" Content="Login" HorizontalAlignment="Right"/>
                         </StackPanel>
 
                     </Border>
-                    <Label Name="appMessage" Content="" FontStyle="Italic" Foreground="#FFAC3131" />
+                    <Label Name="appMessage" Content="" FontSize="{StaticResource FontSizeRegular}" FontStyle="Italic" Foreground="#FFAC3131" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
