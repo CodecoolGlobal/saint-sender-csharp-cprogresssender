@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SanitySender Login" MinHeight="400" Height="400" Width="500">
 
-    <Border Background="{StaticResource ResourceKey=BackgroundDarkBrush}">
+    <Border Background="{StaticResource ResourceKey=GraniteGreyBrush}">
         <Grid>
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <StackPanel
@@ -17,21 +17,32 @@
                     TextBlock.TextAlignment="Center">
 
                     <!-- Login textarea -->
-                    <Border Background="{StaticResource BackgroundLightBrush}"
+                    <Border Background="{StaticResource IvoryBrush}"
                             CornerRadius="10"
                             Padding="40">
 
                         <StackPanel>
-                            <TextBlock Text="Login" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold" Foreground="{StaticResource ColorVividBrush}"/>
+                            <TextBlock Text="Sign In" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold" Foreground="{StaticResource KhakiBrush}"/>
                             <Label Content="E-mail" HorizontalAlignment="Left" Foreground="Gray"/>
                             <TextBox Name="userMailAddress" Padding="5" FontSize="{StaticResource FontSizeRegular}" Style="{DynamicResource TextBoxRounded}"/>
                             <Label Content="Password" HorizontalAlignment="Left" Foreground="Gray"/>
                             <PasswordBox Name="passwordBox1" FontSize="{StaticResource FontSizeRegular}" Padding="5" Style="{DynamicResource PasswordBoxRounded}"/>
-                            <Button Click="Login_Click" Content="Login" HorizontalAlignment="Right"/>
+                            <TextBlock Name="appMessage" Text="" FontSize="{StaticResource FontSizeRegular}" Foreground="{StaticResource GraniteGreyBrush}" Margin="0, 10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Button Grid.Column="1" Content="Cancel" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
+                                <Button Grid.Column="3" Click="Login_Click" Content="Sign In" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
+                            </Grid>
                         </StackPanel>
 
                     </Border>
-                    <Label Name="appMessage" Content="" FontSize="{StaticResource FontSizeRegular}" FontStyle="Italic" Foreground="#FFAC3131" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>

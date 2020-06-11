@@ -13,6 +13,21 @@
 
     <Color x:Key="ColorVivid">#48327B</Color>
     <SolidColorBrush x:Key="ColorVividBrush" Color="{StaticResource ColorVivid}"/>
+
+    <Color x:Key="Beige">#F0E5D3</Color>
+    <SolidColorBrush x:Key="BeigeBrush" Color="{StaticResource Beige}"/>
+
+    <Color x:Key="Khaki">#A5AA93</Color>
+    <SolidColorBrush x:Key="KhakiBrush" Color="{StaticResource Khaki}"/>
+
+    <Color x:Key="Peach">#F3D0B5</Color>
+    <SolidColorBrush x:Key="PeachBrush" Color="{StaticResource Peach}"/>
+
+    <Color x:Key="GraniteGrey">#6A6A6A</Color>
+    <SolidColorBrush x:Key="GraniteGreyBrush" Color="{StaticResource GraniteGrey}"/>
+
+    <Color x:Key="Ivory">#F5F5F5</Color>
+    <SolidColorBrush x:Key="IvoryBrush" Color="{StaticResource Ivory}"/>
    
 
 </ResourceDictionary>
