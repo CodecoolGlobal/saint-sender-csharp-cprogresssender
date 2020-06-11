@@ -18,7 +18,7 @@
             <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True" />
             <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" IsReadOnly="True" />
             <DataGridTextColumn Header="Subject" Binding="{Binding Subject}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Message" Binding="{Binding Message}" IsReadOnly="True"/>
+            <DataGridTextColumn Header="Message" Binding="{Binding Message}" IsReadOnly="True" Width="400"/>
         </DataGrid.Columns>
     </DataGrid>
 </Window>
