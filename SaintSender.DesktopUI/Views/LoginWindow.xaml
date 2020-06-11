@@ -37,7 +37,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 
-                                <Button Grid.Column="1" Content="Cancel" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
+                                <Button Grid.Column="1" Click="Cancel_Click" Content="Cancel" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
                                 <Button Grid.Column="3" Click="Login_Click" Content="Sign In" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
                             </Grid>
                         </StackPanel>

@@ -54,5 +54,10 @@ namespace SaintSender.DesktopUI.Views
         {
             userMailAddress.Text = ConfigurationManager.AppSettings.Get("UserName");
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
