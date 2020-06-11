@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using SaintSender.Core.Entities;
-using SaintSender.DesktopUI.Annotations;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
