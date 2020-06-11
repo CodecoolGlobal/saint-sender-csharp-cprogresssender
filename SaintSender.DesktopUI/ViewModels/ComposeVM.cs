@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows;
 
@@ -10,6 +11,11 @@ namespace SaintSender.Core.Services
         private string subject;
         private string message;
         public string result { get; private set; }
+
+        public ComposeVM()
+        {
+
+        }
 
         public ComposeVM(string to, string subject, string message)
         {
@@ -42,6 +48,21 @@ namespace SaintSender.Core.Services
                 EmailService.SendMail(toAddress, subject, message);
             }
             MessageBox.Show(result);
+        }
+
+        public bool CloseResult()
+        {
+            bool wantToClose = false;
+            MessageBoxResult result = MessageBox.Show("Are you sure to discard the message?", "Clarification" ,MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    wantToClose = true;
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+            return wantToClose;
         }
     }
 }

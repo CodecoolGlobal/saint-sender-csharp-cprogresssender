@@ -34,7 +34,12 @@ namespace SaintSender.DesktopUI.Views
 
         private void Close_Clicked(object sender, RoutedEventArgs e)
         {
-
+            ComposeVM compVM = new ComposeVM();
+            bool result = compVM.CloseResult();
+            if (result)
+            {
+                this.Close();
+            }
         }
     }
 }
