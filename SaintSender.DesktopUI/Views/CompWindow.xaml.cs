@@ -21,14 +21,16 @@ namespace SaintSender.DesktopUI.Views
     /// </summary>
     public partial class CompWindow : Window
     {
+        ComposeVM compVM;
         public CompWindow()
         {
             InitializeComponent();
+            compVM = new ComposeVM();
         }
 
         private void Send_Clicked(object sender, RoutedEventArgs e)
         {
-            ComposeVM compVM = new ComposeVM(targetEmail.Text, subject.Text, message.Text);
+            compVM.setComposeVM(targetEmail.Text, subject.Text, message.Text);
             bool succesful = compVM.Sending();
             if (succesful)
             {
@@ -38,7 +40,6 @@ namespace SaintSender.DesktopUI.Views
 
         private void Close_Clicked(object sender, RoutedEventArgs e)
         {
-            ComposeVM compVM = new ComposeVM();
             bool closeClarified = compVM.CloseResult();
             if (closeClarified)
             {

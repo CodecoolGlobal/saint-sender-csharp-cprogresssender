@@ -18,7 +18,7 @@ namespace SaintSender.Core.Services
 
         }
 
-        public ComposeVM(string to, string subject, string message)
+        public void setComposeVM(string to, string subject, string message)
         {
             toAddress = to;
             this.subject = subject;
