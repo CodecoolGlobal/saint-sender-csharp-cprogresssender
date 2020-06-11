@@ -6,27 +6,52 @@
         xmlns:local="clr-namespace:SaintSender.DesktopUI"
         mc:Ignorable="d"
         Title="SainSender" Height="450" Width="800">
-    <DockPanel>
-        <Button Content="Compose"
-                HorizontalAlignment="Right"
-                Click="ComposeBtn_Clicked"
-                Margin="10,10,10,10"
-                Width="80"
-                Height="30"/>
-        <DataGrid ItemsSource="{Binding ListOfEMails}" AutoGenerateColumns="False" x:Name="DtgFiles" Height="Auto"
-                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RowHeight="50" Margin="0,0,0,10">
+    <DockPanel
+        Background="{StaticResource IvoryBrush}">
+        <Button 
+            DockPanel.Dock="Top"
+            Content="Compose"
+            HorizontalAlignment="Left"
+            Click="ComposeBtn_Clicked"
+            Margin="10,10,10,10"
+            Style="{StaticResource ButtonBasic}"/>
+
+        <DataGrid
+            ItemsSource="{Binding ListOfEMails}"
+            AutoGenerateColumns="False"
+            x:Name="DtgFiles"
+            VerticalAlignment="Stretch" 
+            HorizontalAlignment="Stretch"
+            GridLinesVisibility="Horizontal"
+            Margin="10">
+            
             <DataGrid.Resources>
                 <Style TargetType="DataGrid">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick" />
                 </Style>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="FontWeight" Value="{Binding Read, Converter={StaticResource BoolToFontWeightConverter}}" />
+                </Style>
             </DataGrid.Resources>
+            
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Read" Binding="{Binding Read}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Subject" Binding="{Binding Subject}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Message" Binding="{Binding Message}" IsReadOnly="True" Width="400" />
+                <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" IsReadOnly="True" Width="180"/>
+                
+                <DataGridTemplateColumn Width="*" Header="Subject - Message" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Subject}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="{Binding MessageWithoutCrlf}" Foreground="{StaticResource SteelBlueBrush}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Received" Binding="{Binding Date}" IsReadOnly="True" Width="120"/>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid> 
+
     </DockPanel>
 </Window>
