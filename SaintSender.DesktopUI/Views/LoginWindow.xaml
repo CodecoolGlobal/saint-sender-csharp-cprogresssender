@@ -19,10 +19,10 @@
                     <!-- Login textarea -->
                     <Border Background="{StaticResource BackgroundLightBrush}"
                             CornerRadius="10"
-                            Padding="10, 20, 10, 10">
+                            Padding="40">
 
                         <StackPanel>
-                            <TextBlock Text="Login" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold"/>
+                            <TextBlock Text="Login" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold" Foreground="{StaticResource ColorVividBrush}"/>
                             <Label Content="E-mail" HorizontalAlignment="Left" Foreground="Gray"/>
                             <TextBox Name="userMailAddress" Padding="5" FontSize="{StaticResource FontSizeRegular}" Style="{DynamicResource TextBoxRounded}"/>
                             <Label Content="Password" HorizontalAlignment="Left" Foreground="Gray"/>

@@ -8,11 +8,11 @@
     <Color x:Key="BackgroundLight">#fafafa</Color>
     <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
 
-    <Color x:Key="LightPurple">#7D6DA7</Color>
-    <SolidColorBrush x:Key="LightPurpleBrush" Color="{StaticResource LightPurple}"/>
+    <Color x:Key="ColorLight">#7D6DA7</Color>
+    <SolidColorBrush x:Key="ColorLightBrush" Color="{StaticResource ColorLight}"/>
 
-    <Color x:Key="VividPurple">#48327B</Color>
-    <SolidColorBrush x:Key="VividPurpleBrush" Color="{StaticResource VividPurple}"/>
+    <Color x:Key="ColorVivid">#48327B</Color>
+    <SolidColorBrush x:Key="ColorVividBrush" Color="{StaticResource ColorVivid}"/>
    
 
 </ResourceDictionary>

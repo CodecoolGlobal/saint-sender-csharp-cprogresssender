@@ -6,7 +6,7 @@
 
     <FontFamily x:Key="LatoBold">pack://application;,,,/Fonts/#Lato Bold</FontFamily>
     <system:Double x:Key="FontSizeLarge">30</system:Double>
-    <system:Double x:Key="FontSizeRegular">20</system:Double>
+    <system:Double x:Key="FontSizeRegular">16</system:Double>
     <system:Double x:Key="FontSizeSmall">10</system:Double>
     
 </ResourceDictionary>
