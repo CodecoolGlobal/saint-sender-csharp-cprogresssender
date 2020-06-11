@@ -27,7 +27,7 @@ namespace SaintSender.DesktopUI.Views
 
             if (string.IsNullOrEmpty(userMailAddress.Text) || string.IsNullOrWhiteSpace(passwordBox1.Password))
             {
-                appMessage.Content = "Please fill out both fields.";
+                appMessage.Text = "Please fill out both fields.";
             }
             else
             {
@@ -37,7 +37,7 @@ namespace SaintSender.DesktopUI.Views
                     this.DialogResult = true;
                     this.Close();
                 }
-                appMessage.Content = "Login was not successful.";
+                appMessage.Text = "Login was not successful.";
             }
         }
 
@@ -53,6 +53,11 @@ namespace SaintSender.DesktopUI.Views
         private void LoadUserCredentials()
         {
             userMailAddress.Text = ConfigurationManager.AppSettings.Get("UserName");
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

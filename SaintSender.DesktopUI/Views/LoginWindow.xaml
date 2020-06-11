@@ -5,13 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         mc:Ignorable="d"
-        Title="LoginWindow" MinHeight="400" Height="400" Width="500">
-    <Grid>
-        <TextBox Name="userMailAddress" HorizontalAlignment="Center" Width="300" Height="50" Margin="0,0,0,180"/>
-        <PasswordBox Name="passwordBox1" HorizontalAlignment="Center" Width="300" Height="50"/>
-        <Button Click="Login_Click" Content="Login" HorizontalAlignment="Center" Height="47" Margin="276,265,96,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="E-mail" HorizontalAlignment="Center" Height="26" Margin="96,38,332,0" VerticalAlignment="Top" Width="64"/>
-        <Label Content="Password" HorizontalAlignment="Center" Height="26" Margin="96,128,332,0" VerticalAlignment="Top" Width="64"/>
-        <Label Name="appMessage" Content="" Width=" 300" HorizontalAlignment="Center" Height="30" Margin="0,100,0,0" FontStyle="Italic" Foreground="#FFAC3131" />
-    </Grid>
+        Title="SanitySender Login" MinHeight="400" Height="400" Width="500">
+
+    <Border Background="{StaticResource ResourceKey=GraniteGreyBrush}">
+        <Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <StackPanel
+                    Width="330"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    TextBlock.TextAlignment="Center">
+
+                    <!-- Login textarea -->
+                    <Border Background="{StaticResource IvoryBrush}"
+                            CornerRadius="10"
+                            Padding="40">
+
+                        <StackPanel>
+                            <TextBlock Text="Sign In" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold" Foreground="{StaticResource KhakiBrush}"/>
+                            <Label Content="E-mail" HorizontalAlignment="Left" Foreground="Gray"/>
+                            <TextBox Name="userMailAddress" Padding="5" FontSize="{StaticResource FontSizeRegular}" Style="{DynamicResource TextBoxRounded}"/>
+                            <Label Content="Password" HorizontalAlignment="Left" Foreground="Gray"/>
+                            <PasswordBox Name="passwordBox1" FontSize="{StaticResource FontSizeRegular}" Padding="5" Style="{DynamicResource PasswordBoxRounded}"/>
+                            <TextBlock Name="appMessage" Text="" FontSize="{StaticResource FontSizeRegular}" Foreground="{StaticResource GraniteGreyBrush}" Margin="0, 10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Button Grid.Column="1" Click="Cancel_Click" Content="Cancel" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
+                                <Button Grid.Column="3" Click="Login_Click" Content="Sign In" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
+                            </Grid>
+                        </StackPanel>
+
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </Window>

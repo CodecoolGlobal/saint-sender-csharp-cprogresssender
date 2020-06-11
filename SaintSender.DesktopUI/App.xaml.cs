@@ -27,6 +27,10 @@ namespace SaintSender.DesktopUI
                 Current.MainWindow = mainWindow;
                 mainWindow.Show();
             }
+            else
+            {
+                Shutdown();
+            }
         }
     }
 }
