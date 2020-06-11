@@ -5,6 +5,13 @@
              Startup="ApplicationStart">
              <!--StartupUri="Views/MainWindow.xaml">-->
     <Application.Resources>
-        <ResourceDictionary Source="Styles/Colors.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary Source="Styles/Colors.xaml"/>
+                <ResourceDictionary Source="Styles/Texts.xaml"/>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
