@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SaintSender.Core.Entities;
 using SaintSender.Core.Services;
+using SaintSender.DesktopUI.ViewModels;
 using SaintSender.DesktopUI.Views;
 
 namespace SaintSender.DesktopUI
@@ -22,17 +25,22 @@ namespace SaintSender.DesktopUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MainWindowViewModel _vm;
+
+
         public MainWindow()
         {
             InitializeComponent();
+            _vm = new MainWindowViewModel();
+            this.DataContext = _vm;
         }
 
-        private void GreetBtn_Click(object sender, RoutedEventArgs e)
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var service = new GreetService();
-            var name = NameTxt.Text;
-            var greeting = service.Greet(name);
-            ResultTxt.Text = greeting;
+            DataGrid dg = sender as DataGrid;
+            var selectedEmail = (Mail)dg.SelectedItem;
+            var attrDialog = new SingleMail(selectedEmail);
+            attrDialog.Show();
         }
 
         private void ComposeBtn_Clicked(object sender, RoutedEventArgs e)
