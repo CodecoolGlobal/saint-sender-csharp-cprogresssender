@@ -32,7 +32,7 @@ namespace SaintSender.DesktopUI.Views
             bool succesful = compVM.Sending();
             if (succesful)
             {
-                this.Close();
+                Close();
             }
         }
 
@@ -42,7 +42,7 @@ namespace SaintSender.DesktopUI.Views
             bool closeClarified = compVM.CloseResult();
             if (closeClarified)
             {
-                this.Close();
+                Close();
             }
         }
     }
