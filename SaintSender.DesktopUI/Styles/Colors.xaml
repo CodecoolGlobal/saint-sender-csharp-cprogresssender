@@ -14,6 +14,7 @@
     <Color x:Key="ColorVivid">#48327B</Color>
     <SolidColorBrush x:Key="ColorVividBrush" Color="{StaticResource ColorVivid}"/>
 
+    <!-- Color Palette Earth Light -->
     <Color x:Key="Beige">#F0E5D3</Color>
     <SolidColorBrush x:Key="BeigeBrush" Color="{StaticResource Beige}"/>
 
@@ -28,6 +29,21 @@
 
     <Color x:Key="Ivory">#F5F5F5</Color>
     <SolidColorBrush x:Key="IvoryBrush" Color="{StaticResource Ivory}"/>
-   
 
+    <!-- Color Palette Postal -->
+    <Color x:Key="SteelBlue">#323954</Color>
+    <SolidColorBrush x:Key="SteelBlueBrush" Color="{StaticResource SteelBlue}"/>
+
+    <Color x:Key="SalmonPearl">#EA5147</Color>
+    <SolidColorBrush x:Key="SalmonPearlBrush" Color="{StaticResource SalmonPearl}"/>
+
+    <Color x:Key="PaperWhite">#FEFFFA</Color>
+    <SolidColorBrush x:Key="PaperWhiteBrush" Color="{StaticResource PaperWhite}"/>
+
+    <Color x:Key="SteelBlueLight">#787f9a</Color>
+    <SolidColorBrush x:Key="SteelBlueLightBrush" Color="{StaticResource SteelBlueLight}"/>
+
+    <Color x:Key="SalmonRed">#cd2317</Color>
+    <SolidColorBrush x:Key="SalmonRedBrush" Color="{StaticResource SalmonRed}"/>
+   
 </ResourceDictionary>

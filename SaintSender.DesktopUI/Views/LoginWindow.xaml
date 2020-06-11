@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
         mc:Ignorable="d"
-        Title="SanitySender Login" MinHeight="400" Height="400" Width="500">
+        Title="SanitySender" MinHeight="400" Height="400" Width="500">
 
-    <Border Background="{StaticResource ResourceKey=GraniteGreyBrush}">
+
+
+    <Border Background="{StaticResource ResourceKey=SteelBlueBrush}">
         <Grid>
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <StackPanel
@@ -20,14 +22,17 @@
                     <Border Background="{StaticResource IvoryBrush}"
                             CornerRadius="10"
                             Padding="40">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.8"/>
+                        </Border.Effect>
 
                         <StackPanel>
-                            <TextBlock Text="Sign In" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold" Foreground="{StaticResource KhakiBrush}"/>
+                            <TextBlock Text="Sign In" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold" Foreground="{StaticResource SteelBlueBrush}"/>
                             <Label Content="E-mail" HorizontalAlignment="Left" Foreground="Gray"/>
                             <TextBox Name="userMailAddress" Padding="5" FontSize="{StaticResource FontSizeRegular}" Style="{DynamicResource TextBoxRounded}"/>
                             <Label Content="Password" HorizontalAlignment="Left" Foreground="Gray"/>
                             <PasswordBox Name="passwordBox1" FontSize="{StaticResource FontSizeRegular}" Padding="5" Style="{DynamicResource PasswordBoxRounded}"/>
-                            <TextBlock Name="appMessage" Text="" FontSize="{StaticResource FontSizeRegular}" Foreground="{StaticResource GraniteGreyBrush}" Margin="0, 10"/>
+                            <TextBlock Name="appMessage" Text="" FontSize="{StaticResource FontSizeRegular}" Foreground="{StaticResource SteelBlueBrush}" Margin="0, 10"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -37,7 +42,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 
-                                <Button Grid.Column="1" Click="Cancel_Click" Content="Cancel" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
+                                <Button Grid.Column="1" Click="Cancel_Click" Content="Cancel" Style="{DynamicResource ButtonBasic}"  Padding="20, 5"/>
                                 <Button Grid.Column="3" Click="Login_Click" Content="Sign In" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
                             </Grid>
                         </StackPanel>
