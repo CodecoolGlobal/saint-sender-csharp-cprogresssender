@@ -19,10 +19,5 @@ namespace SaintSender.Core.Entities
             Read = read;
         }
 
-        public override string ToString()
-        {
-            return "Sender: " + Sender + ", Subject: " + Subject + ", message: " + Message + ", date: " + Date +
-                   ", read(y/n): " + Read;
-        }
     }
 }
