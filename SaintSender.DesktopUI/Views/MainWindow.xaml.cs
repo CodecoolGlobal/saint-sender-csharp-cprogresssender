@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ using System.Windows.Shapes;
 using SaintSender.Core.Entities;
 using SaintSender.Core.Services;
 using SaintSender.DesktopUI.ViewModels;
+using SaintSender.DesktopUI.Views;
 
 namespace SaintSender.DesktopUI
 {
@@ -35,7 +37,10 @@ namespace SaintSender.DesktopUI
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            DataGrid dg = sender as DataGrid;
+            var selectedEmail = (Mail)dg.SelectedItem;
+            var attrDialog = new SingleMail(selectedEmail);
+            attrDialog.Show();
         }
     }
 }
