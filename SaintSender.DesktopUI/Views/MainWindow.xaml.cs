@@ -42,5 +42,11 @@ namespace SaintSender.DesktopUI
             var attrDialog = new SingleMail(selectedEmail);
             attrDialog.Show();
         }
+
+        private void ComposeBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            CompWindow compose = new CompWindow();
+            compose.Show();
+        }
     }
 }

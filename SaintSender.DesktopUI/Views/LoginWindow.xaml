@@ -1,0 +1,17 @@
+﻿<Window x:Class="SaintSender.DesktopUI.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
+        mc:Ignorable="d"
+        Title="LoginWindow" MinHeight="400" Height="400" Width="500">
+    <Grid>
+        <TextBox Name="userMailAddress" HorizontalAlignment="Center" Width="300" Height="50" Margin="0,0,0,180"/>
+        <PasswordBox Name="passwordBox1" HorizontalAlignment="Center" Width="300" Height="50"/>
+        <Button Click="Login_Click" Content="Login" HorizontalAlignment="Center" Height="47" Margin="276,265,96,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="E-mail" HorizontalAlignment="Center" Height="26" Margin="96,38,332,0" VerticalAlignment="Top" Width="64"/>
+        <Label Content="Password" HorizontalAlignment="Center" Height="26" Margin="96,128,332,0" VerticalAlignment="Top" Width="64"/>
+        <Label Name="appMessage" Content="" Width=" 300" HorizontalAlignment="Center" Height="30" Margin="0,100,0,0" FontStyle="Italic" Foreground="#FFAC3131" />
+    </Grid>
+</Window>

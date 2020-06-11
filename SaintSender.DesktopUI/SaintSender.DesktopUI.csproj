@@ -42,6 +42,7 @@
       <HintPath>..\packages\EAGetMail.5.2.0.3\lib\net461\EAGetMail.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,8 +66,14 @@
     <Compile Include="ViewModels\SingleMailViewModel.cs" />
     <Compile Include="Views\SingleMail.xaml.cs">
       <DependentUpon>SingleMail.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\MainWindow.xaml">
+    <Page Include="Views\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CompWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+   <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -75,6 +82,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\LoginVM.cs" />
+    <Compile Include="Views\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ComposeVM.cs" />
+    <Compile Include="Views\CompWindow.xaml.cs">
+      <DependentUpon>CompWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
