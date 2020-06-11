@@ -6,19 +6,16 @@
         xmlns:local="clr-namespace:SaintSender.DesktopUI"
         mc:Ignorable="d"
         Title="SainSender" Height="450" Width="800">
-    <DataGrid ItemsSource="{Binding ListOfEMails}" AutoGenerateColumns="False" x:Name="DtgFiles" Height="Auto"
-              VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RowHeight="50">
-        <DataGrid.Resources>
-            <Style TargetType="DataGrid">
-                <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
-            </Style>
-        </DataGrid.Resources>
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Read" Binding="{Binding Read}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Subject" Binding="{Binding Subject}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Message" Binding="{Binding Message}" IsReadOnly="True" Width="400"/>
-        </DataGrid.Columns>
-    </DataGrid>
+    <Grid>
+        <TextBox Name="NameTxt" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Name="GreetBtn" Content="Greet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="140,13,0,0" Click="GreetBtn_Click"/>
+        <TextBlock Name="ResultTxt" HorizontalAlignment="Left" Margin="10,45,0,0" FontSize="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Button Content="Compose"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Click="ComposeBtn_Clicked"
+                Margin="10"
+                Width="80">
+        </Button>
+    </Grid>
 </Window>
