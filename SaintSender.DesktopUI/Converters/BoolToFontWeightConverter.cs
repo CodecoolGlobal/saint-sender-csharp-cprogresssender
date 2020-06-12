@@ -10,7 +10,7 @@ namespace SaintSender.DesktopUI.Converters
         public object Convert(object value, Type targetType,
                               object parameter, CultureInfo culture)
         {
-            return ((bool)value) ? FontWeights.Bold : FontWeights.Normal;
+            return ((bool)value) ? FontWeights.Normal : FontWeights.Bold;
         }
 
         public object ConvertBack(object value, Type targetType,
