@@ -23,6 +23,7 @@
             VerticalAlignment="Stretch" 
             HorizontalAlignment="Stretch"
             GridLinesVisibility="Horizontal"
+            BorderThickness="0"
             Margin="10">
             
             <DataGrid.Resources>
@@ -37,19 +38,19 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" IsReadOnly="True" Width="180"/>
                 
-                <DataGridTemplateColumn Width="*" Header="Subject - Message" IsReadOnly="True">
+                <DataGridTemplateColumn Width="*" Header="Subject - Message" SortMemberPath="Subject" IsReadOnly="True" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Subject}"/>
                                 <TextBlock Text=" - "/>
-                                <TextBlock Text="{Binding MessageWithoutCrlf}" Foreground="{StaticResource SteelBlueBrush}"/>
+                                <TextBlock Text="{Binding MessageWithoutCrlf}" Foreground="Gray"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Received" Binding="{Binding Date}" IsReadOnly="True" Width="120"/>
+                <DataGridTextColumn Header="Received" Binding="{Binding Date}" IsReadOnly="True" Width="130"/>
             </DataGrid.Columns>
         </DataGrid> 
 

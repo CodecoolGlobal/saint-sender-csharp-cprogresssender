@@ -21,7 +21,7 @@
 
         <Style.Triggers>
             <Trigger Property="DataGridCell.IsSelected" Value="True">
-                <Setter Property="Background" Value="{StaticResource SteelBlueLightBrush}" />
+                <Setter Property="Background" Value="{StaticResource SteelBlueBrush}" />
                 <Setter Property="BorderThickness" Value="0"/>
             </Trigger>
         </Style.Triggers>
