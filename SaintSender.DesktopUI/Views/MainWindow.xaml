@@ -8,16 +8,23 @@
         Title="SainSender" Height="450" Width="800">
     <DockPanel
         Background="{StaticResource IvoryBrush}">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            
         <Button 
-            DockPanel.Dock="Top"
             Content="Compose"
-            HorizontalAlignment="Left"
             Click="ComposeBtn_Clicked"
             Margin="10,10,10,10"
             Style="{StaticResource ButtonBasic}"/>
 
+        <Button 
+            Content="Refresh"
+            Click="Refresh_Click"
+            Margin="10,10,10,10"
+            Style="{StaticResource ButtonBasic}"/>
+        </StackPanel>
+
         <DataGrid
-            ItemsSource="{Binding ListOfEMails}"
+            ItemsSource="{Binding ListOfEMails, Mode=OneWay}"
             AutoGenerateColumns="False"
             x:Name="DtgFiles"
             VerticalAlignment="Stretch" 
@@ -36,6 +43,7 @@
             </DataGrid.Resources>
             
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Read" Binding="{Binding Read}" IsReadOnly="True" Width="80"/>
                 <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" IsReadOnly="True" Width="180"/>
                 
                 <DataGridTemplateColumn Width="*" Header="Subject - Message" SortMemberPath="Subject" IsReadOnly="True" >

@@ -70,6 +70,7 @@ namespace SaintSender.Core.Services
 
         public List<Entities.Mail> GetEmails()
         {
+            _mails.Clear();
             FetchMail();
             return _mails;
         }

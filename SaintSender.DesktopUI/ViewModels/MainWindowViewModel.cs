@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +12,27 @@ namespace SaintSender.DesktopUI.ViewModels
 {
     class MainWindowViewModel
     {
-        private List<Mail> _mails;
         private readonly EmailService _emailService;
 
-        public List<Mail> ListOfEMails
-        {
-            get => _mails;
-            set => _mails = value;
-        }
+        public ObservableCollection<Mail> ListOfEMails { get; set; }
+
 
         public MainWindowViewModel()
         {
             _emailService = new EmailService();
-            ListOfEMails = new List<Mail>(_emailService.GetEmails());
+            ListOfEMails = new ObservableCollection<Mail>(_emailService.GetEmails());
+        }
+
+        public void RefreshEmail()
+        {
+            var mails = _emailService.GetEmails();
+            if (mails != null)
+            {
+                ListOfEMails.Clear();
+                mails.ForEach(x => ListOfEMails.Add(x));
+            }
+
+           
         }
     }
 }

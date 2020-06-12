@@ -48,5 +48,11 @@ namespace SaintSender.DesktopUI
             CompWindow compose = new CompWindow();
             compose.Show();
         }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.RefreshEmail();
+            
+        }
     }
 }
