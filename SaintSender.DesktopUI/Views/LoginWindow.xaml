@@ -1,0 +1,55 @@
+﻿<Window x:Class="SaintSender.DesktopUI.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
+        mc:Ignorable="d"
+        Title="SanitySender" MinHeight="400" Height="400" Width="500">
+
+
+
+    <Border Background="{StaticResource ResourceKey=SteelBlueBrush}">
+        <Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <StackPanel
+                    Width="330"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    TextBlock.TextAlignment="Center">
+
+                    <!-- Login textarea -->
+                    <Border Background="{StaticResource IvoryBrush}"
+                            CornerRadius="10"
+                            Padding="40">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.8"/>
+                        </Border.Effect>
+
+                        <StackPanel>
+                            <TextBlock Text="Sign In" Margin="0, 10" FontSize="{StaticResource FontSizeLarge}" FontFamily="Century Gothic Bold" Foreground="{StaticResource SteelBlueBrush}"/>
+                            <Label Content="E-mail" HorizontalAlignment="Left" Foreground="Gray"/>
+                            <TextBox Name="userMailAddress" Padding="5" FontSize="{StaticResource FontSizeRegular}" Style="{DynamicResource TextBoxRounded}"/>
+                            <Label Content="Password" HorizontalAlignment="Left" Foreground="Gray"/>
+                            <PasswordBox Name="passwordBox1" FontSize="{StaticResource FontSizeRegular}" Padding="5" Style="{DynamicResource PasswordBoxRounded}"/>
+                            <TextBlock Name="appMessage" Text="" FontSize="{StaticResource FontSizeRegular}" Foreground="{StaticResource SteelBlueBrush}" Margin="0, 10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Button Grid.Column="1" Click="Cancel_Click" Content="Cancel" Style="{DynamicResource ButtonBasic}"  Padding="20, 5"/>
+                                <Button Grid.Column="3" Click="Login_Click" Content="Sign In" Style="{DynamicResource ButtonBasic}" Padding="20, 5"/>
+                            </Grid>
+                        </StackPanel>
+
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</Window>

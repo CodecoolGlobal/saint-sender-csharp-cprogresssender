@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SaintSender.DesktopUI.Views;
 
 namespace SaintSender.DesktopUI
 {
@@ -13,5 +14,23 @@ namespace SaintSender.DesktopUI
     /// </summary>
     public partial class App : Application
     {
+        private void ApplicationStart(object sender, StartupEventArgs e)
+        {
+            Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
+            var loginDialog = new LoginWindow();
+
+            if (loginDialog.ShowDialog() == true)
+            {
+                var mainWindow = new MainWindow();
+                Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+                Current.MainWindow = mainWindow;
+                mainWindow.Show();
+            }
+            else
+            {
+                Shutdown();
+            }
+        }
     }
 }

@@ -6,9 +6,61 @@
         xmlns:local="clr-namespace:SaintSender.DesktopUI"
         mc:Ignorable="d"
         Title="SainSender" Height="450" Width="800">
-    <Grid>
-        <TextBox Name="NameTxt" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Name="GreetBtn" Content="Greet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="140,13,0,0" Click="GreetBtn_Click"/>
-        <TextBlock Name="ResultTxt" HorizontalAlignment="Left" Margin="10,45,0,0" FontSize="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-    </Grid>
+    <DockPanel
+        Background="{StaticResource IvoryBrush}">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            
+        <Button 
+            Content="Compose"
+            Click="ComposeBtn_Clicked"
+            Margin="10,10,10,10"
+            Style="{StaticResource ButtonBasic}"/>
+
+        <Button 
+            Content="Refresh"
+            Click="Refresh_Click"
+            Margin="10,10,10,10"
+            Style="{StaticResource ButtonBasic}"/>
+        </StackPanel>
+
+        <DataGrid
+            ItemsSource="{Binding ListOfEMails, Mode=OneWay}"
+            AutoGenerateColumns="False"
+            x:Name="DtgFiles"
+            VerticalAlignment="Stretch" 
+            HorizontalAlignment="Stretch"
+            GridLinesVisibility="Horizontal"
+            BorderThickness="0"
+            Margin="10">
+            
+            <DataGrid.Resources>
+                <Style TargetType="DataGrid">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick" />
+                </Style>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="FontWeight" Value="{Binding Read, Converter={StaticResource BoolToFontWeightConverter}}" />
+                </Style>
+            </DataGrid.Resources>
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Read" Binding="{Binding Read}" IsReadOnly="True" Width="80"/>
+                <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" IsReadOnly="True" Width="180"/>
+                
+                <DataGridTemplateColumn Width="*" Header="Subject - Message" SortMemberPath="Subject" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Subject}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="{Binding MessageWithoutCrlf}" Foreground="Gray"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Received" Binding="{Binding Date}" IsReadOnly="True" Width="130"/>
+            </DataGrid.Columns>
+        </DataGrid> 
+
+    </DockPanel>
 </Window>

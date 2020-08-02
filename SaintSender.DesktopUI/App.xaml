@@ -2,8 +2,22 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SaintSender.DesktopUI"
-             StartupUri="Views/MainWindow.xaml">
+             xmlns:super="clr-namespace:SaintSender.DesktopUI.Converters"
+             Startup="ApplicationStart">
+             <!--StartupUri="Views/MainWindow.xaml">-->
     <Application.Resources>
-         
+        
+        <ResourceDictionary>
+            <super:BoolToFontWeightConverter x:Key="BoolToFontWeightConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary Source="Styles/Colors.xaml"/>
+                <ResourceDictionary Source="Styles/Texts.xaml"/>
+                <ResourceDictionary Source="Styles/Fonts.xaml"/>
+                <ResourceDictionary Source="Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="Styles/DataGrid.xaml"/>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
