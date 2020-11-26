@@ -4,52 +4,49 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using System.Security;
-using EAGetMail;
 using SaintSender.Core.Interfaces;
+using System.Net;
+using MailKit.Net.Imap;
+using MailKit.Security;
+using MailKit;
+using MailKit.Search;
 
 namespace SaintSender.Core.Services
 {
-    public class EmailService: IEmailService
+    public class EmailServiceMailKit: IEmailService
     {
         private List<Entities.Mail> _mails = new List<Entities.Mail>();
-        public MailInfo[] MailInfo { get; set; }
 
+       
         private void FetchMail()
         {
-            MailServer oServer = new MailServer("imap.gmail.com",
-                LoginService.UserAddress, //"cprogresssender@gmail.com",
-                SecureStringToString(LoginService.Password), //"CPSpi1000101",
-                ServerProtocol.Imap4);
-            MailClient oClient = new MailClient("TryIt");
-            oServer.SSLConnection = true;
-            oServer.Port = 993;
 
-            try
+            using (var client = new ImapClient())
             {
-                oClient.Connect(oServer);
-                ReceiveEmails(oClient);
-                oClient.Quit();
-            }
-            catch (Exception e)
-            {
-                // changed _mails to null because this is the ad-hoc connection tester in LoginVM.
-                _mails = null;
-                // throw (e);
+                client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+                client.Authenticate(
+                    LoginService.UserAddress,
+                    SecureStringToString(LoginService.Password));
+
+                ReceiveEmails(client);
+                client.Disconnect(true);
             }
         }
 
-        private void ReceiveEmails(MailClient client)
+        private void ReceiveEmails(ImapClient client)
         {
-            MailInfo[] mailInfos = client.GetMailInfos();
-            foreach (var mailInfo in mailInfos)
+            client.Inbox.Open(FolderAccess.ReadOnly);
+            var mailIds = client.Inbox.Search(SearchQuery.All);
+            foreach (var id in mailIds)
             {
-                Mail oMail = client.GetMail(mailInfo);
+                var mail = client.Inbox.GetMessage(id);
+                var info = client.Inbox.Fetch(new[] { id }, MessageSummaryItems.Flags);
                 _mails.Add(new Entities.Mail(
-                    oMail.From.ToString(),
-                    oMail.Subject.ToString(),
-                    oMail.TextBody,
-                    oMail.SentDate,
-                    mailInfo.Read
+                    mail.From.ToString(),
+                    mail.Subject.ToString(),
+                    mail.TextBody.ToString(),
+                    mail.Date.DateTime,
+                    info[0].Flags.Value.HasFlag(MessageFlags.Seen)
                     ));
             }
 
@@ -99,6 +96,11 @@ namespace SaintSender.Core.Services
                 Console.WriteLine(ex.ToString());
             }
 
+        }
+        public static bool IsValidEmailAddress(string to)
+        {
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            return regex.IsMatch(to);
         }
     }
 }

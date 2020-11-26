@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SaintSender.Core.Entities;
+using SaintSender.Core.Interfaces;
 using SaintSender.Core.Services;
 using SaintSender.DesktopUI.ViewModels;
 using SaintSender.DesktopUI.Views;
@@ -26,12 +27,14 @@ namespace SaintSender.DesktopUI
     public partial class MainWindow : Window
     {
         private readonly MainWindowViewModel _vm;
+        private IEmailService _emailService;
 
 
-        public MainWindow()
+        public MainWindow(IEmailService emailService)
         {
             InitializeComponent();
-            _vm = new MainWindowViewModel();
+            _emailService = emailService;
+            _vm = new MainWindowViewModel(emailService);
             this.DataContext = _vm;
         }
 
@@ -45,7 +48,7 @@ namespace SaintSender.DesktopUI
 
         private void ComposeBtn_Clicked(object sender, RoutedEventArgs e)
         {
-            CompWindow compose = new CompWindow();
+            CompWindow compose = new CompWindow(_emailService);
             compose.Show();
         }
 

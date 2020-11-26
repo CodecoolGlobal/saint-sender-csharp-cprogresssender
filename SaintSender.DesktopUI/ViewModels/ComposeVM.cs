@@ -2,6 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows;
+using SaintSender.Core.Interfaces;
+using SaintSender.Core.Services.Utils;
 
 namespace SaintSender.Core.Services
 {
@@ -11,11 +13,13 @@ namespace SaintSender.Core.Services
         private string subject;
         private string message;
         private string messageToUser;
+        private IEmailService _mailService;
+
         public bool canSend { get; private set; }
 
-        public ComposeVM()
+        public ComposeVM(IEmailService emailService)
         {
-
+            _mailService = emailService;
         }
 
         public void setComposeVM(string to, string subject, string message)
@@ -28,7 +32,7 @@ namespace SaintSender.Core.Services
         }
         private void Validation()
         {
-            if (toAddress == string.Empty || !EmailService.IsValidEmailAddress(toAddress))
+            if (toAddress == string.Empty || !AddressValidator.IsValidEmailAddress(toAddress))
             {
                 messageToUser = "Provide a correct email address...";
             }
@@ -52,7 +56,7 @@ namespace SaintSender.Core.Services
             Validation();
             if (canSend)
             {
-                EmailService.SendMail(toAddress, subject, message);
+                _mailService.SendMail(toAddress, subject, message);
                 sent = true;
             }
             MessageBox.Show(messageToUser, "Status", MessageBoxButton.OK, MessageBoxImage.Information);
