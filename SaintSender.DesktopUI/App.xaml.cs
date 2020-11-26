@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SaintSender.Core.Services;
 using SaintSender.DesktopUI.Views;
 
 namespace SaintSender.DesktopUI
@@ -22,7 +23,7 @@ namespace SaintSender.DesktopUI
 
             if (loginDialog.ShowDialog() == true)
             {
-                var mainWindow = new MainWindow();
+                var mainWindow = new MainWindow(new EmailServiceMailKit());
                 Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
                 Current.MainWindow = mainWindow;
                 mainWindow.Show();

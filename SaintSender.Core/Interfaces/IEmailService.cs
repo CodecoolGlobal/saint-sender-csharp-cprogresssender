@@ -3,8 +3,9 @@ using SaintSender.Core.Entities;
 
 namespace SaintSender.Core.Interfaces
 {
-    interface IEmailService
+    public interface IEmailService
     {
         List<Mail> GetEmails();
+        void SendMail(string target, string subject, string message);
     }
 }

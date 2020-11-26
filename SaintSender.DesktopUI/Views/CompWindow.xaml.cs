@@ -22,10 +22,10 @@ namespace SaintSender.DesktopUI.Views
     public partial class CompWindow : Window
     {
         ComposeVM compVM;
-        public CompWindow()
+        public CompWindow(IEmailService emailService)
         {
             InitializeComponent();
-            compVM = new ComposeVM();
+            compVM = new ComposeVM(emailService);
         }
 
         private void Send_Clicked(object sender, RoutedEventArgs e)

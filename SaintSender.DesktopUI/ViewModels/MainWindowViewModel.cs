@@ -7,19 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using SaintSender.Core.Entities;
 using SaintSender.Core.Services;
+using SaintSender.Core.Interfaces;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
     class MainWindowViewModel
     {
-        private readonly EmailService _emailService;
+        private readonly IEmailService _emailService;
 
         public ObservableCollection<Mail> ListOfEMails { get; set; }
 
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IEmailService mailService)
         {
-            _emailService = new EmailService();
+            _emailService = mailService;
             ListOfEMails = new ObservableCollection<Mail>(_emailService.GetEmails());
         }
 
